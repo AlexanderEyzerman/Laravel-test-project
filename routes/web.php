@@ -39,3 +39,7 @@ Route::get('/contact',[ContactController::class, 'index'])->name('contact.index'
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
