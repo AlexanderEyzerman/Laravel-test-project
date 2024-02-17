@@ -5,16 +5,23 @@
             @csrf
             <div class="mb-3">
                 <label for="title">Title</label>
-                <input name ="title" type="text" class="form-control" id="title" placeholder="Title">
+                <input name ="title" type="text" class="form-control" id="title" placeholder="Title" value="{{ old('title') }}">
+                @error('title')
+                <p class = "text-danger"> {{ $message }} </p>
+                @enderror
             </div>
             <div class="mb-3">
                 <label for="content">Content</label>
-                <textarea name="content" class="form-control" id="content" placeholder="Content"></textarea>
+                <textarea name="content" class="form-control" id="content" placeholder="Content">{{ old('content') }}</textarea>
+                @error('content')
+                <p class = "text-danger"> {{ $message }} </p>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="categories">Categories</label>
                 <select class="form-control" id="categories" name="category_id">
                     @foreach($categories as $category)
+                        {{ old("category_id") === $category ? 'selected' : ''}}
                         <option value="{{ $category->id }}">{{ $category->title}}</option>
                     @endforeach
                 </select>
