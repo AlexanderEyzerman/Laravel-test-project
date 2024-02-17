@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('content')
     <div>
-        <a class="btn btn-dark" href="{{ route('post.create') }}" role="button">Create Post</a>
+        <a class="btn btn-primary" href="{{ route('post.create') }}" role="button">Create Post</a>
     </div>
     <div>
         @foreach($posts as $post)
