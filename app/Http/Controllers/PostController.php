@@ -3,12 +3,23 @@
 namespace App\Http\Controllers;
 
 
+use App\Http\Requests\Post\StoreRequest;
+use App\Http\Requests\Post\UpdateRequest;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
+use App\Service\Post\Service;
 
 class PostController extends Controller
 {
+//  service
+    public $service;
+
+    public function __construct(Service $service)
+    {
+        $this->service = $service;
+    }
+
     public function index()
     {
         $posts = Post::all();
@@ -25,18 +36,11 @@ class PostController extends Controller
         return view('post.create', compact( 'categories','tags'));
     }
 
-    public function store()
+    public function store(StoreRequest $request)
     {
-        $data = request()->validate([
-            'title' => 'string',
-            'content' => 'string',
-            'category_id' => 'integer',
-            'tags' => ''
-        ]);
-        $tags = $data['tags'];
-        unset($data['tags']);
-        $post = Post::create($data);
-        $post->tags()->attach($tags);
+        $data = $request->validated();
+
+        $this->service->store($data);
 
         return redirect()->route('post.index');
     }
@@ -53,18 +57,11 @@ class PostController extends Controller
 
         return view('post.edit', compact('post', 'categories', 'tags'));
     }
-    public function update(Post $post)
+    public function update(Post $post, UpdateRequest $request)
     {
-        $data = request()->validate([
-            'title' => 'string',
-            'content' => 'string',
-            'category_id' => 'integer',
-            'tags' => ''
-        ]);
-        $tags = $data['tags'];
-        unset($data['tags']);
-        $post->update($data);
-        $post->tags()->sync($tags);
+        $data = $request->validated();
+
+        $this->service->update($post, $data);
 
         return redirect()->route('post.show', $post->id);
     }
