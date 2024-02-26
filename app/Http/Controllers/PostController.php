@@ -9,6 +9,8 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
 use App\Service\Post\Service;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class PostController extends Controller
 {
@@ -20,7 +22,7 @@ class PostController extends Controller
         $this->service = $service;
     }
 
-    public function index()
+    public function index() : View
     {
         $posts = Post::all();
 
@@ -28,7 +30,7 @@ class PostController extends Controller
 
     }
 
-    public function create()
+    public function create() : View
     {
         $categories = Category::all();
         $tags = Tag::all();
@@ -36,7 +38,7 @@ class PostController extends Controller
         return view('post.create', compact( 'categories','tags'));
     }
 
-    public function store(StoreRequest $request)
+    public function store(StoreRequest $request) : RedirectResponse
     {
         $data = $request->validated();
 
@@ -45,19 +47,19 @@ class PostController extends Controller
         return redirect()->route('post.index');
     }
 
-    public function show(Post $post)
+    public function show(Post $post) : View
     {
         return view('post.show', compact('post'));
     }
 
-    public function edit(Post $post)
+    public function edit(Post $post) : View
     {
         $categories = Category::all();
         $tags = Tag::all();
 
         return view('post.edit', compact('post', 'categories', 'tags'));
     }
-    public function update(Post $post, UpdateRequest $request)
+    public function update(Post $post, UpdateRequest $request) : RedirectResponse
     {
         $data = $request->validated();
 
@@ -66,7 +68,7 @@ class PostController extends Controller
         return redirect()->route('post.show', $post->id);
     }
 
-    public function destroy(Post $post)
+    public function destroy(Post $post) : RedirectResponse
     {
         $post->delete();
         return redirect()->route('post.index');
