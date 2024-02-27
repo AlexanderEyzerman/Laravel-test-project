@@ -9,6 +9,8 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected $guarded = false;
+
     public function category()
     {
       return $this->belongsTo(Category::class);
@@ -19,6 +21,6 @@ class Post extends Model
         return $this->belongsToMany(Tag::class);
     }
 
-    protected $guarded = false;
+
 
 }
