@@ -9,6 +9,6 @@
         @endforeach
     </div>
     <div>
-        {{ $posts->links() }}
+        {{ $posts->withQueryString()->onEachSide(3)->links() }}
     </div>
 @endsection

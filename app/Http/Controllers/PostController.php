@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 
+use App\Http\Filters\PostFilter;
+use App\Http\Requests\Post\FilterRequest;
 use App\Http\Requests\Post\StoreRequest;
 use App\Http\Requests\Post\UpdateRequest;
 use App\Models\Category;
@@ -22,14 +24,17 @@ class PostController extends Controller
         $this->service = $service;
     }
 
-    public function index() : View
+    public function index(FilterRequest $request) : View
     {
-        $posts = Post::paginate(20);
+        $data = $request->validated();
+
+        $filter = app()->make(PostFilter::class, ['queryParams' => array_filter($data)]);
+
+        $posts = Post::filter($filter)->paginate(20);
 
         return view('post.index', compact('posts'));
 
     }
-
     public function create() : View
     {
         $categories = Category::all();
