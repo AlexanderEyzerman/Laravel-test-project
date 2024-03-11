@@ -19,9 +19,6 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', [MainController::class, 'index'])->name('main.index');
-
 Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin'], function () {
 
     Route::group(['namespace' => 'Post'], function () {
