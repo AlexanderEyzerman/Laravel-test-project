@@ -37,6 +37,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('contact.index') }}">Contacts</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.post.index') }}">Admin Page</a>
+                        </li>
                     </ul>
                 </div>
             </nav>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -20,9 +21,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [MainController::class, 'index'])->name('main.index');
-Route::get('/admin', [MainController::class, 'index'])->name('main.index');
 
-Route::group(['namespace' => 'App\Http\Controllers\Post'], function (){
+Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin'], function () {
+
+    Route::group(['namespace' => 'Post'], function () {
+        Route::get('/posts', 'IndexController')->name('admin.post.index');
+    });
+});;
+
+Route::group(['namespace' => 'App\Http\Controllers\Post'], function () {
     Route::get('/posts', 'IndexController')->name('post.index');
     Route::get('/posts/create', 'CreateController')->name('post.create');
     Route::post('/posts', 'StoreController')->name('post.store');
@@ -38,3 +45,9 @@ Route::get('/contact',[ContactController::class, 'index'])->name('contact.index'
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/',[HomeController::class,'index']);
