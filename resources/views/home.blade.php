@@ -19,5 +19,11 @@
             </div>
         </div>
     </div>
+
+
+    <div style="text-align: center;">
+        <a style="text-decoration: none" href = "{{ route('main.index')}}">Go to main page</a>
+    </div>
+
 </div>
 @endsection
