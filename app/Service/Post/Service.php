@@ -18,10 +18,17 @@ class Service
 
     public function update($post,$data)
     {
-        $tags = $data['tags'];
-        unset($data['tags']);
-        $post->update($data);
-        $post->tags()->sync($tags);
+        if(isset($data['tags'])) {
+            $tags = $data['tags'];
+            unset($data['tags']);
+            $post->update($data);
+            $post->tags()->sync($tags);
+        }
+        else{
+            $post->update($data);
+        }
+
+        return $post->fresh();
     }
 
 

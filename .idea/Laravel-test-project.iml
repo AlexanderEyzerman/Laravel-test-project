@@ -8,14 +8,6 @@
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/tests/Feature" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/tests/Unit" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/Laravel-test-project/app" isTestSource="false" packagePrefix="App\" />
-      <sourceFolder url="file://$MODULE_DIR$/Laravel-test-project/database/factories" isTestSource="false" packagePrefix="Database\Factories\" />
-      <sourceFolder url="file://$MODULE_DIR$/Laravel-test-project/database/seeders" isTestSource="false" packagePrefix="Database\Seeders\" />
-      <sourceFolder url="file://$MODULE_DIR$/Laravel-test-project/tests" isTestSource="true" packagePrefix="Tests\" />
-      <sourceFolder url="file://$MODULE_DIR$/pc/app" isTestSource="false" packagePrefix="App\" />
-      <sourceFolder url="file://$MODULE_DIR$/pc/database/factories" isTestSource="false" packagePrefix="Database\Factories\" />
-      <sourceFolder url="file://$MODULE_DIR$/pc/database/seeders" isTestSource="false" packagePrefix="Database\Seeders\" />
-      <sourceFolder url="file://$MODULE_DIR$/pc/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/Laravel-test-project/tests/Feature" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/Laravel-test-project/tests/Unit" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/pc/tests/Feature" isTestSource="true" />
@@ -133,6 +125,9 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/vlucas/phpdotenv" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/voku/portable-ascii" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/webmozart/assert" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/error-solutions" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/defstudio/telegraph" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/spatie/laravel-package-tools" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

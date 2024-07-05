@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Post;
 
 use App\Http\Requests\Post\StoreRequest;
-use App\Http\Resources\Post\PostRecourse;
+use App\Http\Resources\Post\PostResourse;
 use Illuminate\Http\RedirectResponse;
 
 class StoreController extends BaseController
@@ -14,7 +14,7 @@ class StoreController extends BaseController
 
         $post = $this->service->store($data);
 
-        return new PostRecourse($post);
+        return new PostResourse($post);
 
         //return redirect()->route('post.index');
     }
